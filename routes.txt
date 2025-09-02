@@ -1,0 +1,48 @@
+Auth: POST /api/auth/register, POST /api/auth/login, GET /api/auth/me
+Users (Profile):
+GET /api/users/me
+PATCH /api/users/me/personal
+PATCH /api/users/me/address
+PATCH /api/users/me/traffic
+GET /api/users/me/cars
+GET /api/users/me/bids
+GET /api/users/me/wishlist
+GET /api/users/me/profile-summary
+Cars:
+POST /api/cars
+GET /api/cars?search=&make=&model=&bodyType=&minYear=&maxYear=&minPrice=&maxPrice=&page=&limit=&sort=&owner=me|<userId>
+GET /api/cars/:id
+PATCH /api/cars/:id
+DELETE /api/cars/:id
+Auctions:
+POST /api/auctions
+GET /api/auctions?status=&make=&model=&bodyType=&minPrice=&maxPrice=&page=&limit=&sort=
+GET /api/auctions/live
+GET /api/auctions/:id
+GET /api/auctions/:id/related
+PATCH /api/auctions/:id
+PATCH /api/auctions/:id/close
+Bids:
+POST /api/bids { auctionId, amount }
+GET /api/auctions/:id/bids?limit=10
+GET /api/users/me/bids
+Payments:
+POST /api/payments { auctionId } // winner only
+PATCH /api/payments/:id/pay
+PATCH /api/payments/:id/advance-shipping
+GET /api/payments/:id
+GET /api/payments
+Wishlist:
+POST /api/wishlist { carId }
+DELETE /api/wishlist/:carId
+GET /api/wishlist
+Constants:
+GET /api/constants/body-types
+Server-side business rules covered
+
+No self-bidding on cars the user owns
+Bid must be higher than currentPrice and auction must be live
+Only winner can create/pay a payment
+Shipping delivered marks auction completed
+Prevent multiple active auctions per car
+Ownership checks for car/auction updates and deletes

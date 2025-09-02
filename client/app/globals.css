@@ -1,0 +1,27 @@
+/* Import Lato font FIRST - before any other rules */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+/* Import Josefin Sans */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100..700&display=swap');
+
+/* Then import Tailwind */
+@import "tailwindcss";
+
+/* Define your CSS variables */
+:root {
+  --primary: #2E3D83;
+  --font-lato: 'Lato', sans-serif;
+  --font-josefin: 'Josefin Sans', sans-serif;
+}
+
+/* Make the custom colors/fonts available to Tailwind */
+@theme inline {
+  --color-primary: var(--primary);
+  --font-family-lato: var(--font-lato);
+  --font-family-josefin: var(--font-josefin);
+}
+
+/* Apply Lato font globally */
+body {
+  font-family: var(--font-lato), system-ui, -apple-system, sans-serif;
+}
